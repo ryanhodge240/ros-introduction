@@ -97,7 +97,7 @@ class ServoControl(object):
         """
         Sends the drive command to the servo
         """
-        self.send_velocity_cmd(cmd.left_front_velocity)
+        self.send_velocity_cmd(cmd.left_front_vel)
     
     # Starts the servo and then publishes the servo speed
     def send_velocity_cmd(self, velocity):
