@@ -53,7 +53,7 @@ class ServoControl(object):
 
     def run(self):
         rate = rospy.Rate(10)
-
+        counter = 0
         servo = Servo()
 
         while not rospy.is_shutdown():
