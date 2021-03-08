@@ -67,8 +67,9 @@ class ServoControl(object):
                 self.drive_cmd_buffer = None
 
             if button_state:
+                rospy.loginfo("Button pushed")
                 self.publish_button_state()
-                button_state = 0
+                button_state = False
             else:
                 self.left_servo.stop()
             
