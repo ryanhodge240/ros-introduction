@@ -64,7 +64,7 @@ class ServoControl(object):
             # Check to see if there are commands in the buffer to send to the servo
             if self.drive_cmd_buffer:
                 rospy.loginfo("Test")
-                drive_fcn = self.send_drive_buffer_velocity()
+                drive_fcn = self.send_drive_buffer_velocity
                 drive_fcn(self.drive_cmd_buffer)
                 self.drive_cmd_buffer = None
 
