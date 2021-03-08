@@ -83,7 +83,7 @@ class ServoControl(object):
                 counter = 0
 
             self.drive_cmd_buffer = CommandDrive()
-            self.send_drive_buffer_velocity(self.drive_cmd_buffer)
+            self.send_drive_buffer_velocity(cmd = self.drive_cmd_buffer)
 
             self.servo_pub.publish(servo)
 
@@ -99,7 +99,6 @@ class ServoControl(object):
         """
         Sends the drive command to the servo
         """
-        props = self.servo_mapping["left_motor"]
         self.send_velocity_cmd(cmd.left_front_velocity)
     
     # Starts the servo and then publishes the servo speed
