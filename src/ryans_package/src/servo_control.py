@@ -37,7 +37,7 @@ class ServoControl(object):
     def setup_sensors(self):
         properties = self.sensor_mapping["button"]
         self.button_address = properties["address"]
-        GPIO.setup(self.button_address, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+        GPIO.setup(self.button_address, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
     # Stop the servos from moving
     def stop_servo(self):
@@ -55,6 +55,7 @@ class ServoControl(object):
         rate = rospy.Rate(10)
         counter = 0
         servo = Servo()
+        button_state = GPIO.input(self.button_address)
 
         while not rospy.is_shutdown():
             now = rospy.Time.now()
@@ -65,7 +66,9 @@ class ServoControl(object):
                 drive_fcn(self.drive_cmd_buffer)
                 self.drive_cmd_buffer = None
 
-            GPIO.add_event_detect(self.button_address, GPIO.RISING, callback=self.publish_button_state)
+            if button_state:
+                self.publish_button_state()
+                button_state = 0
             
             # Don't update the velocity and position of the motors every iteration
             if counter >= 5:
