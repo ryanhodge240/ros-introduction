@@ -63,16 +63,15 @@ class ServoControl(object):
 
             # Check to see if there are commands in the buffer to send to the servo
             if self.drive_cmd_buffer:
+                rospy.loginfo("Test")
                 drive_fcn = self.send_drive_buffer_velocity
                 drive_fcn(self.drive_cmd_buffer)
                 self.drive_cmd_buffer = None
 
             if not button_state:
-                rospy.loginfo("Button pushed")
                 self.publish_button_state()
                 button_state = False
             else:
-                rospy.loginfo("Button not pushed")
                 self.left_servo.stop()
             
             # Don't update the velocity and position of the motors every iteration
