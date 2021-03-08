@@ -1,6 +1,6 @@
 <launch>
 
-    <node pkg = "servo_control" name = "ServoControl" type = "servo_control.py" output = "screen">
+    <node pkg = "ryans_package" name = "ServoControl" type = "servo_control.py" output = "screen">
     </node>
 
 </launch>
