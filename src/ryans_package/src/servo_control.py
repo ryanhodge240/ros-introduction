@@ -55,10 +55,11 @@ class ServoControl(object):
         rate = rospy.Rate(10)
         counter = 0
         servo = Servo()
-        button_state = GPIO.input(self.button_address)
 
         while not rospy.is_shutdown():
             now = rospy.Time.now()
+
+            button_state = GPIO.input(self.button_address)
 
             # Check to see if there are commands in the buffer to send to the servo
             if self.drive_cmd_buffer:
@@ -66,7 +67,7 @@ class ServoControl(object):
                 drive_fcn(self.drive_cmd_buffer)
                 self.drive_cmd_buffer = None
 
-            if button_state:
+            if not button_state:
                 rospy.loginfo("Button pushed")
                 self.publish_button_state()
                 button_state = False
