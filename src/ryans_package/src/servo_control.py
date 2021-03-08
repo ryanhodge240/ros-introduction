@@ -69,6 +69,8 @@ class ServoControl(object):
             if button_state:
                 self.publish_button_state()
                 button_state = 0
+            else:
+                self.left_servo.stop()
             
             # Don't update the velocity and position of the motors every iteration
             if counter >= 5:
