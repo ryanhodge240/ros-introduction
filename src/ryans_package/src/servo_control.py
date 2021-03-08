@@ -68,8 +68,6 @@ class ServoControl(object):
                 drive_fcn(self.drive_cmd_buffer)
                 self.drive_cmd_buffer = None
 
-            self.send_drive_buffer_velocity()
-
             if not button_state:
                 self.publish_button_state()
                 button_state = False
@@ -83,7 +81,7 @@ class ServoControl(object):
                 counter = 0
 
             self.drive_cmd_buffer = CommandDrive()
-            self.send_drive_buffer_velocity(cmd = self.drive_cmd_buffer)
+            self.send_drive_buffer_velocity(self.drive_cmd_buffer)
 
             self.servo_pub.publish(servo)
 
