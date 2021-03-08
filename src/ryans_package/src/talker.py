@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # license removed for brevity
 import rospy
 from ryans_package.msg import Servo
