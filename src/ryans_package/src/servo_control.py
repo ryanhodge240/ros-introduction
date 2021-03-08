@@ -71,6 +71,7 @@ class ServoControl(object):
                 self.publish_button_state()
                 button_state = False
             else:
+                rospy.loginfo("Button not pushed")
                 self.left_servo.stop()
             
             # Don't update the velocity and position of the motors every iteration
