@@ -1,0 +1,5 @@
+<launch>
+
+    <node pkg = "servo_control" name = "ServoControl" type = "servo_control.py" output = "screen"/>
+
+</launch>
