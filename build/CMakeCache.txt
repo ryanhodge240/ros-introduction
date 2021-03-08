@@ -488,6 +488,12 @@ ryan_tutorials_BINARY_DIR:STATIC=/home/ubuntu/ros_ws/build/ryan_tutorials
 //Value Computed by CMake
 ryan_tutorials_SOURCE_DIR:STATIC=/home/ubuntu/ros_ws/src/ryan_tutorials
 
+//Value Computed by CMake
+ryans_package_BINARY_DIR:STATIC=/home/ubuntu/ros_ws/build/ryans_package
+
+//Value Computed by CMake
+ryans_package_SOURCE_DIR:STATIC=/home/ubuntu/ros_ws/src/ryans_package
+
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/noetic/share/sensor_msgs/cmake
 
@@ -651,7 +657,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

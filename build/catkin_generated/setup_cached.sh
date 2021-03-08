@@ -8,9 +8,9 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH='/home/ubuntu/ros_ws/devel:/opt/ros/noetic'
-export LD_LIBRARY_PATH='/opt/ros/noetic/lib'
-export PKG_CONFIG_PATH='/opt/ros/noetic/lib/pkgconfig'
+export LD_LIBRARY_PATH='/home/ubuntu/ros_ws/devel/lib:/opt/ros/noetic/lib'
+export PKG_CONFIG_PATH='/home/ubuntu/ros_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig'
 export PWD='/home/ubuntu/ros_ws/build'
-export PYTHONPATH='/opt/ros/noetic/lib/python3/dist-packages'
+export PYTHONPATH='/home/ubuntu/ros_ws/devel/lib/python3/dist-packages:/opt/ros/noetic/lib/python3/dist-packages'
 export ROSLISP_PACKAGE_DIRECTORIES='/home/ubuntu/ros_ws/devel/share/common-lisp'
 export ROS_PACKAGE_PATH='/home/ubuntu/ros_ws/src:/opt/ros/noetic/share'
