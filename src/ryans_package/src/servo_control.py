@@ -96,11 +96,11 @@ class ServoControl(object):
         Sends the drive command to the servo
         """
         rospy.logdebug("Drive command callback received: {}".format(cmd))
+        rospy.loginfo("Sending velocity: %f", cmd.left_front_vel)
         self.send_velocity_cmd(cmd.left_front_vel)
     
     # Starts the servo and then publishes the servo speed
     def send_velocity_cmd(self, velocity):
-        rospy.loginfo("Sending velocity: %f", velocity)
         self.left_servo.ChangeDutyCycle(velocity)
 
 if __name__ == "__main__":
