@@ -32,5 +32,5 @@ if __name__ == "__main__":
     rospy.loginfo("Starting the servo wrapper node")
 
     wrapper = ServoListener()
-    rospy.on_shutdown(wrapper.stop_servo())
+    rospy.on_shutdown(wrapper.stop_servo)
     wrapper.run()
