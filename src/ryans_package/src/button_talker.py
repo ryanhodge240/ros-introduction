@@ -32,7 +32,7 @@ class ButtonTalker(object):
                 self.publish_button_state(5.0)
                 button_state = False
             else:
-                self.publish_button_state(12.5)
+                self.publish_button_state(15.0)
 
             rate.sleep()
 
