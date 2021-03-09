@@ -29,7 +29,7 @@ class ButtonTalker(object):
             button_state = GPIO.input(self.button_address)
 
             if not button_state:
-                self.publish_button_state(2.5)
+                self.publish_button_state(3)
                 button_state = False
             else:
                 self.publish_button_state(12.5)
