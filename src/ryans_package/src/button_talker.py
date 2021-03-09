@@ -10,9 +10,7 @@ class ButtonTalker(object):
         rospy.loginfo("Initializing sensors")
 
         # Initialize attributes
-        self.left_servo = None
         self.button_address = None
-        self.servo_mapping = rospy.get_param('~servo_mapping')
         self.sensor_mapping = rospy.get_param('~sensor_mapping')
         self.setup_sensors()
 
@@ -39,6 +37,7 @@ class ButtonTalker(object):
             rate.sleep()
 
     def publish_button_state(self, velocity):
+        rospy.loginfo("The velocity: %d", velocity)
         button = CommandDrive()
         button.left_front_vel = velocity
         self.button_pub.publish(button)
