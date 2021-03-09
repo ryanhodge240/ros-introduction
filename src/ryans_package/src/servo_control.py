@@ -32,7 +32,7 @@ class ServoControl(object):
         Hz = properties["Hz"]
         GPIO.setup(address, GPIO.OUT)
         self.left_servo = GPIO.PWM(address, Hz)
-        self.left_servo.start(1)
+        self.left_servo.start(2.5)
 
     # Setup all the sensors
     def setup_sensors(self):
@@ -60,8 +60,6 @@ class ServoControl(object):
         while not rospy.is_shutdown():
             now = rospy.Time.now()
 
-            rospy.Subscriber("cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
-
             button_state = GPIO.input(self.button_address)
 
             # Check to see if there are commands in the buffer to send to the servo
@@ -80,6 +78,8 @@ class ServoControl(object):
 
             if self.drive_cmd_buffer:
                 self.send_drive_buffer_velocity(self.drive_cmd_buffer)
+
+            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
 
             self.servo_pub.publish(servo)
 
