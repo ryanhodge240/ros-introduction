@@ -100,7 +100,7 @@ class ServoControl(object):
     
     # Starts the servo and then publishes the servo speed
     def send_velocity_cmd(self, velocity):
-        rospy.loginfo("Sending velocity...")
+        rospy.loginfo("Sending velocity: %f", velocity)
         self.left_servo.ChangeDutyCycle(velocity)
 
 if __name__ == "__main__":
