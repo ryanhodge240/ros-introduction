@@ -39,7 +39,7 @@ class ServoListener(object):
             if self.callback:
                 self.callback = False
             else:
-                self.drive_callback()
+                self.make_servo_nuetral()
             rate.sleep()
 
 if __name__ == "__main__":
