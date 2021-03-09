@@ -1,6 +1,0 @@
-sensor_mapping:
-  button:
-    address: 13
-  distance:
-    trig: 15
-    echo: 19
