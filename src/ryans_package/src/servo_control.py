@@ -76,8 +76,7 @@ class ServoControl(object):
                 servo.position = self.read_servo_position
                 counter = 0
 
-            if self.drive_cmd_buffer:
-                self.send_drive_buffer_velocity(self.drive_cmd_buffer)
+            self.send_drive_buffer_velocity(self.drive_cmd_buffer)
 
             rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
 
