@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 from ryans_package.msg import CommandDrive, Servo
 
 GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
 
 def setup_servo():
     servo_mapping = rospy.get_param('~servo_mapping')
