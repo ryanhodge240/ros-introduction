@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 import rospy
-import RPi.GPIO as GPIO
 from ryans_package.msg import Servo, CommandDrive
 import hardware_setup as hardware
-
-GPIO.setmode(GPIO.BOARD)
 
 class ServoListener(object):
     def __init__(self):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
-        self.drive_cmd_buffer = None
         self.left_servo = None
-        self.servo_mapping = rospy.get_param('~servo_mapping')
         self.left_servo = hardware.setup_servo()
         hardware.stop_servo(self.left_servo)
 
@@ -34,4 +29,5 @@ if __name__ == "__main__":
     rospy.loginfo("Starting the servo wrapper node")
 
     wrapper = ServoListener()
+    rospy.on_shutdown(hardware.stop_servo(wrapper.left_servo))
     wrapper.run()
