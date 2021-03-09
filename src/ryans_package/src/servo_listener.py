@@ -5,7 +5,7 @@ from ryans_package.msg import Servo, CommandDrive
 
 GPIO.setmode(GPIO.BOARD)
 
-class ServoControl(object):
+class ServoListener(object):
     def __init__(self):
         rospy.loginfo("Initializing servos")
 
@@ -13,17 +13,9 @@ class ServoControl(object):
         self.drive_cmd_cb = None
         self.drive_cmd_buffer = None
         self.left_servo = None
-        self.button_address = None
         self.servo_mapping = rospy.get_param('~servo_mapping')
-        self.sensor_mapping = rospy.get_param('~sensor_mapping')
-        self.setup_sensors()
         self.setup_servo()
         self.stop_servo()  # don't move at start
-
-        # Set up publishers and subscribers
-        self.drive_cmd_sub = rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
-        self.button_pub = rospy.Publisher("/cmd_drive", CommandDrive, queue_size = 1)
-        self.servo_pub = rospy.Publisher("/servo", Servo, queue_size = 1)
 
     # Setup all of the servos or motors using their parameters
     def setup_servo(self):
@@ -33,12 +25,6 @@ class ServoControl(object):
         GPIO.setup(address, GPIO.OUT)
         self.left_servo = GPIO.PWM(address, Hz)
         self.left_servo.start(2.5)
-
-    # Setup all the sensors
-    def setup_sensors(self):
-        properties = self.sensor_mapping["button"]
-        self.button_address = properties["address"]
-        GPIO.setup(self.button_address, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
     # Stop the servos from moving
     def stop_servo(self):
@@ -50,63 +36,15 @@ class ServoControl(object):
         on the next iteration of the run() loop.
         """
         rospy.loginfo("Drive command callback received: {}".format(cmd))
-        self.drive_cmd_buffer = cmd
+        self.left_servo.ChangeDutyCycle(cmd.left_front_vel)
 
     def run(self):
-        rate = rospy.Rate(10)
-        counter = 0
-        servo = Servo()
-
-        while not rospy.is_shutdown():
-            now = rospy.Time.now()
-
-            button_state = GPIO.input(self.button_address)
-
-            # Check to see if there are commands in the buffer to send to the servo
-
-            if not button_state:
-                self.publish_button_state(5.0)
-                button_state = False
-            else:
-                self.publish_button_state(12.5)
-            
-            # Don't update the velocity and position of the motors every iteration
-            if (counter >= 5):
-                servo.velocity = self.read_servo_velocity
-                servo.position = self.read_servo_position
-                counter = 0
-
-            self.send_drive_buffer_velocity(self.drive_cmd_buffer)
-
-            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
-
-            self.servo_pub.publish(servo)
-
-            rate.sleep()
-
-    def publish_button_state(self, velocity):
-        button = CommandDrive()
-        button.left_front_vel = velocity
-        self.button_pub.publish(button)
-
-    # Send out the velocity (cmd) to the servo
-    def send_drive_buffer_velocity(self, cmd):
-        """
-        Sends the drive command to the servo
-        """
-        rospy.logdebug("Drive command callback received: {}".format(cmd))
-        #rospy.loginfo("Sending velocity: %f", cmd.left_front_vel)
-        self.send_velocity_cmd(cmd.left_front_vel)
-    
-    # Starts the servo and then publishes the servo speed
-    def send_velocity_cmd(self, velocity):
-        self.left_servo.ChangeDutyCycle(velocity)
+        rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
 
 if __name__ == "__main__":
-    # Lower case?
     rospy.init_node("Servo Wrapper", log_level=rospy.INFO)
     rospy.loginfo("Starting the servo wrapper node")
 
-    wrapper = ServoControl()
+    wrapper = ServoListener()
     rospy.on_shutdown(wrapper.stop_servo)
     wrapper.run()
