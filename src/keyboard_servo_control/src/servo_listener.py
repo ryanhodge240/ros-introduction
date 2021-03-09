@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rospy
 from servo_control.msg import Servo, CommandDrive
-from geometry_msg import Twist
+from geometry_msgs import Twist
 import hardware_setup as hardware
 
 class ServoListener(object):
