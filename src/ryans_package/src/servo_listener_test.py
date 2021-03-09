@@ -10,6 +10,9 @@ class ServoListener(object):
         # Initialize attributes
         self.left_servo = None
         self.left_servo = hardware.setup_servo()
+        self.stop_servo()
+
+    def stop_servo(self):
         hardware.stop_servo(self.left_servo)
 
     # Start the servo
@@ -29,5 +32,5 @@ if __name__ == "__main__":
     rospy.loginfo("Starting the servo wrapper node")
 
     wrapper = ServoListener()
-    rospy.on_shutdown(hardware.stop_servo(wrapper.left_servo))
+    rospy.on_shutdown(wrapper.stop_servo())
     wrapper.run()
