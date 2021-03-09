@@ -20,7 +20,7 @@ class ServoListener(object):
 
     # Start the servo
     def drive_cmd_cb(self, cmd):
-        self.hardware.move_servo(cmd.left_front_vel)
+        self.hardware.move_servo(self.left_servo, cmd.left_front_vel)
 
     # Infinite while loop
     def run(self):
