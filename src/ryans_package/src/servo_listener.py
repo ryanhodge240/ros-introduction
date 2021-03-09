@@ -14,6 +14,7 @@ class ServoListener(object):
         self.left_servo = None
         self.servo_mapping = rospy.get_param('~servo_mapping')
         self.setup_servo()
+        self.stop_servo()
 
     # Setup all of the servos or motors using their parameters
     def setup_servo(self):
@@ -26,7 +27,7 @@ class ServoListener(object):
 
     # Stop the servos from moving
     def stop_servo(self):
-        self.left_servo.stop()
+        self.left_servo.ChangeDutyCycle(0)
 
     def drive_cmd_cb(self, cmd):
         """
