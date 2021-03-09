@@ -43,20 +43,6 @@ class ServoListener(object):
             rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
             rate.sleep()
 
-    def listener(self):
-        rospy.loginfo("Initializing servos")
-
-        # Initialize attributes
-        self.drive_cmd_buffer = None
-        self.left_servo = None
-        self.servo_mapping = rospy.get_param('~servo_mapping')
-        self.setup_servo()
-        rate = rospy.Rate(10)
-
-        while not rospy.is_shutdown():
-            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
-            rate.sleep()
-
 if __name__ == "__main__":
     rospy.init_node("Servo Wrapper", log_level=rospy.INFO)
     rospy.loginfo("Starting the servo wrapper node")
