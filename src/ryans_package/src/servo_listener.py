@@ -36,7 +36,6 @@ class ServoListener(object):
         """
         rospy.loginfo("Drive command callback received")
         self.left_servo.ChangeDutyCycle(cmd.left_front_vel)
-        self.stop_servo()
 
     def run(self):
         rate = rospy.Rate(10)
