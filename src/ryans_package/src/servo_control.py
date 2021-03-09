@@ -78,7 +78,8 @@ class ServoControl(object):
                 servo.position = self.read_servo_position
                 counter = 0
 
-            self.send_drive_buffer_velocity(self.drive_cmd_buffer)
+            if self.drive_cmd_buffer:
+                self.send_drive_buffer_velocity(self.drive_cmd_buffer)
 
             self.servo_pub.publish(servo)
 
