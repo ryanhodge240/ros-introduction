@@ -165,6 +165,7 @@ include_directories(
 catkin_install_python(PROGRAMS
   src/button_talker.py
   src/servo_listener.py
+  src/hardware_setup.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
