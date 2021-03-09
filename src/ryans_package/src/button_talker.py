@@ -1,32 +1,24 @@
 #!/usr/bin/env python3
 import rospy
-import RPi.GPIO as GPIO
 from ryans_package.msg import CommandDrive
-
-GPIO.setmode(GPIO.BOARD)
+import hardware_setup as hardware
 
 class ButtonTalker(object):
     def __init__(self):
         rospy.loginfo("Initializing sensors")
 
         # Initialize attributes
-        self.button_address = None
-        self.sensor_mapping = rospy.get_param('~sensor_mapping')
-        self.setup_sensors()
+        # Returns the address of the button
+        self.button_address = hardware.setup_button()
 
-        # Set up publishers and subscribers
+        # Set up publisher
         self.button_pub = rospy.Publisher("/cmd_drive", CommandDrive, queue_size = 1)
-
-    def setup_sensors(self):
-        properties = self.sensor_mapping["button"]
-        self.button_address = properties["address"]
-        GPIO.setup(self.button_address, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
     def run(self):
         rate = rospy.Rate(10)
 
         while not rospy.is_shutdown():
-            button_state = GPIO.input(self.button_address)
+            button_state = hardware.get_button_state(self.button_address)
 
             if not button_state:
                 self.publish_button_state(3)

@@ -1,44 +1,29 @@
 #!/usr/bin/env python3
 import rospy
-import RPi.GPIO as GPIO
 from ryans_package.msg import Servo, CommandDrive
-
-GPIO.setmode(GPIO.BOARD)
+import hardware_setup as hardware
 
 class ServoListener(object):
     def __init__(self):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
-        self.drive_cmd_buffer = None
-        self.left_servo = None
-        self.servo_mapping = rospy.get_param('~servo_mapping')
-        self.setup_servo()
+        self.left_servo = hardware.setup_servo()
         self.stop_servo()
 
-    # Setup all of the servos or motors using their parameters
-    def setup_servo(self):
-        properties = self.servo_mapping["left_motor"]
-        address = properties["address"]
-        Hz = properties["Hz"]
-        GPIO.setup(address, GPIO.OUT)
-        self.left_servo = GPIO.PWM(address, Hz)
-        self.left_servo.start(2.5)
-
-    # Stop the servos from moving
     def stop_servo(self):
-        self.left_servo.ChangeDutyCycle(0)
+        hardware.stop_servo(self.left_servo)
 
     # Start the servo
-    def drive_cmd_cb(self, cmd):
-        self.left_servo.ChangeDutyCycle(cmd.left_front_vel)
+    def drive_callback(self, cmd):
+        hardware.move_servo(self.left_servo, cmd.left_front_vel)
 
     # Infinite while loop
     def run(self):
         rate = rospy.Rate(10)
 
         while not rospy.is_shutdown():
-            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
+            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_callback, queue_size = 1)
             rate.sleep()
 
 if __name__ == "__main__":
