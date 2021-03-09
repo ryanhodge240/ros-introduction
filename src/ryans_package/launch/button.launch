@@ -1,0 +1,10 @@
+<launch> 
+
+    <node pkg = "ryans_package" name = "ServoControl" type = "button_talker.py" output = "screen">
+
+        <rosparam file="$(find ryans_package)/config/servo_params.yaml" />
+        <rosparam file="$(find ryans_package)/config/sensor_params.yaml" />
+
+    </node>
+
+</launch>

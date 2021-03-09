@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import rospy
 import RPi.GPIO as GPIO
-from ryans_package.config import sensor_params
 from ryans_package.msg import CommandDrive
 
 GPIO.setmode(GPIO.BOARD)
