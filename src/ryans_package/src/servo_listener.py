@@ -6,7 +6,7 @@ from ryans_package.msg import Servo, CommandDrive
 GPIO.setmode(GPIO.BOARD)
 
 class ServoListener(object):
-    def test(self):
+    def __init__(self):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
@@ -37,6 +37,20 @@ class ServoListener(object):
         self.left_servo.ChangeDutyCycle(cmd.left_front_vel)
 
     def run(self):
+        rate = rospy.Rate(10)
+
+        while not rospy.is_shutdown():
+            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
+            rate.sleep()
+
+    def listener(self):
+        rospy.loginfo("Initializing servos")
+
+        # Initialize attributes
+        self.drive_cmd_buffer = None
+        self.left_servo = None
+        self.servo_mapping = rospy.get_param('~servo_mapping')
+        self.setup_servo()
         rate = rospy.Rate(10)
 
         while not rospy.is_shutdown():
