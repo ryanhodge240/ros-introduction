@@ -29,13 +29,11 @@ class ServoListener(object):
     def stop_servo(self):
         self.left_servo.ChangeDutyCycle(0)
 
+    # Start the servo
     def drive_cmd_cb(self, cmd):
-        """
-        Takes the drive command and stores it in the buffer to be sent
-        on the next iteration of the run() loop.
-        """
         self.left_servo.ChangeDutyCycle(cmd.left_front_vel)
 
+    # Infinite while loop
     def run(self):
         rate = rospy.Rate(10)
 
