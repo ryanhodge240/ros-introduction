@@ -49,7 +49,7 @@ class ServoControl(object):
         Takes the drive command and stores it in the buffer to be sent
         on the next iteration of the run() loop.
         """
-        rospy.logdebug("Drive command callback received: {}".format(cmd))
+        rospy.loginfo("Drive command callback received: {}".format(cmd))
         self.drive_cmd_buffer = cmd
 
     def run(self):
@@ -95,7 +95,7 @@ class ServoControl(object):
         Sends the drive command to the servo
         """
         rospy.logdebug("Drive command callback received: {}".format(cmd))
-        rospy.loginfo("Sending velocity: %f", cmd.left_front_vel)
+        #rospy.loginfo("Sending velocity: %f", cmd.left_front_vel)
         self.send_velocity_cmd(cmd.left_front_vel)
     
     # Starts the servo and then publishes the servo speed
