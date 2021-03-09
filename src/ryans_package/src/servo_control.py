@@ -60,7 +60,7 @@ class ServoControl(object):
         while not rospy.is_shutdown():
             now = rospy.Time.now()
 
-            self.drive_cmd_sub = rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
+            rospy.Subscriber("cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
 
             button_state = GPIO.input(self.button_address)
 
@@ -78,7 +78,6 @@ class ServoControl(object):
                 servo.position = self.read_servo_position
                 counter = 0
 
-            self.drive_cmd_buffer = CommandDrive()
             self.send_drive_buffer_velocity(self.drive_cmd_buffer)
 
             self.servo_pub.publish(servo)
@@ -96,11 +95,11 @@ class ServoControl(object):
         Sends the drive command to the servo
         """
         rospy.logdebug("Drive command callback received: {}".format(cmd))
+        rospy.loginfo("Sending velocity: %f", cmd.left_front_vel)
         self.send_velocity_cmd(cmd.left_front_vel)
     
     # Starts the servo and then publishes the servo speed
     def send_velocity_cmd(self, velocity):
-        rospy.loginfo("Sending velocity: %f", velocity)
         self.left_servo.ChangeDutyCycle(velocity)
 
 if __name__ == "__main__":
