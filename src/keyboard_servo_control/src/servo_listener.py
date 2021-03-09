@@ -24,7 +24,7 @@ class ServoListener(object):
         else:
             position = 7.5
         
-        rospy.loginfo("Got a command: p = %f", cmd)
+        rospy.loginfo("Got a command: p = %f", position)
 
         hardware.move_servo(self.left_servo, position)
 
