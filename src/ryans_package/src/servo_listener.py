@@ -34,7 +34,6 @@ class ServoListener(object):
         Takes the drive command and stores it in the buffer to be sent
         on the next iteration of the run() loop.
         """
-        rospy.loginfo("Drive command callback received")
         self.left_servo.ChangeDutyCycle(cmd.left_front_vel)
 
     def run(self):
