@@ -11,6 +11,7 @@ class ServoListener(object):
         # Initialize attributes
         self.left_servo = hardware.setup_servo()
         self.stop_servo()
+        self.callback = False
 
     def stop_servo(self):
         hardware.stop_servo(self.left_servo)
@@ -21,12 +22,13 @@ class ServoListener(object):
             position = 2.5
         elif cmd.angular.z:
             position = 12.5
-        else:
-            position = 7.5
         
         rospy.loginfo("Got a command: p = %f", position)
-
+        self.callback = True
         hardware.move_servo(self.left_servo, position)
+
+    def make_servo_nuetral(self):
+        hardware.move_servo(self.left_servo, 7.5)
 
     # Infinite while loop
     def run(self):
@@ -34,6 +36,10 @@ class ServoListener(object):
 
         while not rospy.is_shutdown():
             rospy.Subscriber("/cmd_vel", Twist, self.drive_callback, queue_size = 1)
+            if self.callback:
+                self.callback = False
+            else:
+                self.drive_callback()
             rate.sleep()
 
 if __name__ == "__main__":
