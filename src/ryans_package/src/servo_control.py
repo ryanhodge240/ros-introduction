@@ -32,6 +32,7 @@ class ServoControl(object):
         Hz = properties["Hz"]
         GPIO.setup(address, GPIO.OUT)
         self.left_servo = GPIO.PWM(address, Hz)
+        self.left_servo.start(1)
 
     # Setup all the sensors
     def setup_sensors(self):
@@ -84,7 +85,7 @@ class ServoControl(object):
 
     def publish_button_state(self):
         button = CommandDrive()
-        button.left_front_vel = 1
+        button.left_front_vel = 3
         self.button_pub.publish(button)
 
     # Send out the velocity (cmd) to the servo
@@ -98,7 +99,7 @@ class ServoControl(object):
     # Starts the servo and then publishes the servo speed
     def send_velocity_cmd(self, velocity):
         rospy.loginfo("Sending velocity...")
-        self.left_servo.start(velocity)
+        self.left_servo.ChangeDutyCycle(velocity)
 
 if __name__ == "__main__":
     # Lower case?
