@@ -36,6 +36,8 @@ class ServoControl(object):
             else:
                 self.publish_button_state(12.5)
 
+            rate.sleep()
+
     def publish_button_state(self, velocity):
         button = CommandDrive()
         button.left_front_vel = velocity
