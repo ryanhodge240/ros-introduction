@@ -10,7 +10,6 @@ class ServoListener(object):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
-        self.drive_cmd_cb = None
         self.drive_cmd_buffer = None
         self.left_servo = None
         self.servo_mapping = rospy.get_param('~servo_mapping')
@@ -44,7 +43,6 @@ class ServoListener(object):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
-        self.drive_cmd_cb = None
         self.drive_cmd_buffer = None
         self.left_servo = None
         self.servo_mapping = rospy.get_param('~servo_mapping')
