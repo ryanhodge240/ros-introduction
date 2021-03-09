@@ -36,10 +36,10 @@ class ButtonTalker(object):
 
             rate.sleep()
 
-    def publish_button_state(self, velocity):
-        rospy.loginfo("The velocity: %d", velocity)
+    def publish_button_state(self, position):
+        rospy.loginfo("The position: %d", position)
         button = CommandDrive()
-        button.left_front_vel = velocity
+        button.left_front_vel = position
         self.button_pub.publish(button)
 
 if __name__ == "__main__":
