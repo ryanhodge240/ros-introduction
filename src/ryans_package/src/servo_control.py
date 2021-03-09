@@ -60,6 +60,8 @@ class ServoControl(object):
         while not rospy.is_shutdown():
             now = rospy.Time.now()
 
+            self.drive_cmd_sub = rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
+
             button_state = GPIO.input(self.button_address)
 
             # Check to see if there are commands in the buffer to send to the servo
