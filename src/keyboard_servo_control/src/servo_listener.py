@@ -33,7 +33,7 @@ class ServoListener(object):
         rate = rospy.Rate(10)
 
         while not rospy.is_shutdown():
-            rospy.Subscriber("/cmd_drive", Twist, self.drive_callback, queue_size = 1)
+            rospy.Subscriber("/cmd_vel", Twist, self.drive_callback, queue_size = 1)
             rate.sleep()
 
 if __name__ == "__main__":
