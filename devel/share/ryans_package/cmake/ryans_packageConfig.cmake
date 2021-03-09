@@ -67,7 +67,7 @@ set(ryans_package_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(ryans_package_SOURCE_PREFIX /home/ubuntu/ros_ws/src/ryans_package)
+  set(ryans_package_SOURCE_PREFIX /home/ubuntu/ros_ws/src/servo_control)
   set(ryans_package_DEVEL_PREFIX /home/ubuntu/ros_ws/devel)
   set(ryans_package_INSTALL_PREFIX "")
   set(ryans_package_PREFIX ${ryans_package_DEVEL_PREFIX})
@@ -110,7 +110,7 @@ if(NOT "/home/ubuntu/ros_ws/devel/include " STREQUAL " ")
         message(FATAL_ERROR "Project 'ryans_package' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'ryans_package' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/ubuntu/ros_ws/src/ryans_package/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'ryans_package' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/ubuntu/ros_ws/src/servo_control/${idir}'.  ${_report}")
     endif()
     _list_append_unique(ryans_package_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/ubuntu/ros_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/ubuntu/ros_ws/devel/lib;/home/ubuntu/ros_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

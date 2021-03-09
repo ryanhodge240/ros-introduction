@@ -61,16 +61,16 @@ servo_control/CMakeFiles/servo_control_generate_messages_eus: /home/ubuntu/ros_w
 /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg/CommandDrive.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg/CommandDrive.l: /home/ubuntu/ros_ws/src/servo_control/msg/CommandDrive.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ubuntu/ros_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from servo_control/CommandDrive.msg"
-	cd /home/ubuntu/ros_ws/build/servo_control && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ubuntu/ros_ws/src/servo_control/msg/CommandDrive.msg -Iservo_control:/home/ubuntu/ros_ws/src/servo_control/msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p servo_control -o /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg
+	cd /home/ubuntu/ros_ws/build/servo_control && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ubuntu/ros_ws/src/servo_control/msg/CommandDrive.msg -Iservo_control:/home/ubuntu/ros_ws/src/servo_control/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p servo_control -o /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg
 
 /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg/Servo.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg/Servo.l: /home/ubuntu/ros_ws/src/servo_control/msg/Servo.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ubuntu/ros_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from servo_control/Servo.msg"
-	cd /home/ubuntu/ros_ws/build/servo_control && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ubuntu/ros_ws/src/servo_control/msg/Servo.msg -Iservo_control:/home/ubuntu/ros_ws/src/servo_control/msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p servo_control -o /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg
+	cd /home/ubuntu/ros_ws/build/servo_control && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ubuntu/ros_ws/src/servo_control/msg/Servo.msg -Iservo_control:/home/ubuntu/ros_ws/src/servo_control/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p servo_control -o /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg
 
 /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ubuntu/ros_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for servo_control"
-	cd /home/ubuntu/ros_ws/build/servo_control && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control servo_control sensor_msgs std_msgs
+	cd /home/ubuntu/ros_ws/build/servo_control && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control servo_control std_msgs
 
 servo_control_generate_messages_eus: servo_control/CMakeFiles/servo_control_generate_messages_eus
 servo_control_generate_messages_eus: /home/ubuntu/ros_ws/devel/share/roseus/ros/servo_control/msg/CommandDrive.l

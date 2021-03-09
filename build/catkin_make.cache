@@ -1,2 +1,2 @@
-ryan_tutorials:ryans_package:servo_control
+servo_control
 -DCATKIN_DEVEL_PREFIX=/home/ubuntu/ros_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros_ws/install -G Unix Makefiles
