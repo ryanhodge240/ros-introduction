@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>Servo_control</name>
+  <name>servo_control</name>
   <version>0.0.0</version>
   <description>Servo Control Package</description>
 
