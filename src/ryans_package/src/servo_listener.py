@@ -37,7 +37,11 @@ class ServoListener(object):
         self.left_servo.ChangeDutyCycle(cmd.left_front_vel)
 
     def run(self):
-        rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
+        rate = rospy.Rate(10)
+
+        while not rospy.is_shutdown():
+            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
+            rate.sleep()
 
     def listener(self):
         rospy.loginfo("Initializing servos")
