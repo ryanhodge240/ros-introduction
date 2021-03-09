@@ -8,7 +8,6 @@ class ServoListener(object):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
-        self.left_servo = None
         self.left_servo = hardware.setup_servo()
         self.stop_servo()
 
@@ -16,7 +15,7 @@ class ServoListener(object):
         hardware.stop_servo(self.left_servo)
 
     # Start the servo
-    def drive_cmd_cb(self, cmd):
+    def drive_callback(self, cmd):
         hardware.move_servo(self.left_servo, cmd.left_front_vel)
 
     # Infinite while loop
@@ -24,7 +23,7 @@ class ServoListener(object):
         rate = rospy.Rate(10)
 
         while not rospy.is_shutdown():
-            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_cmd_cb, queue_size = 1)
+            rospy.Subscriber("/cmd_drive", CommandDrive, self.drive_callback, queue_size = 1)
             rate.sleep()
 
 if __name__ == "__main__":

@@ -15,8 +15,18 @@ def setup_servo():
     servo.start(2.5)
     return servo
 
+def setup_button():
+    sensor_mapping = rospy.get_param('~sensor_mapping')
+    properties = sensor_mapping["button"]
+    address = properties["address"]
+    GPIO.setup(address, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+    return address
+
 def stop_servo(servo):
     servo.ChangeDutyCycle(0)
 
 def move_servo(servo, position):
     servo.ChangeDutyCycle(position)
+
+def get_button_state(address):
+    return GPIO.input(address)

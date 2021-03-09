@@ -1,6 +1,6 @@
 <launch> 
 
-    <node pkg = "ryans_package" name = "Button" type = "button_talker.py" output = "screen">
+    <node pkg = "ryans_package" name = "Button" type = "button_talker_test.py" output = "screen">
         <rosparam file="$(find ryans_package)/config/sensor_params.yaml" />
     </node>
 
