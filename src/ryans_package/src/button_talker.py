@@ -5,7 +5,7 @@ from ryans_package.msg import CommandDrive
 
 GPIO.setmode(GPIO.BOARD)
 
-class ServoControl(object):
+class ButtonTalker(object):
     def __init__(self):
         rospy.loginfo("Initializing sensors")
 
@@ -42,3 +42,10 @@ class ServoControl(object):
         button = CommandDrive()
         button.left_front_vel = velocity
         self.button_pub.publish(button)
+
+if __name__ == "__main__":
+    rospy.init_node("Button Wrapper", log_level=rospy.INFO)
+    rospy.loginfo("Starting the button wrapper node")
+
+    wrapper = ButtonTalker()
+    wrapper.run()
