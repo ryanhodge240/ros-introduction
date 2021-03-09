@@ -14,7 +14,6 @@ class ServoListener(object):
         self.left_servo = None
         self.servo_mapping = rospy.get_param('~servo_mapping')
         self.setup_servo()
-        self.stop_servo()
 
     # Setup all of the servos or motors using their parameters
     def setup_servo(self):
