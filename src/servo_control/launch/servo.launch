@@ -1,0 +1,11 @@
+<launch> 
+
+    <node pkg = "servo_control" name = "Button" type = "button_talker.py" output = "screen">
+        <rosparam file="$(find servo_control)/config/sensor_params.yaml" />
+    </node>
+
+    <node pkg = "servo_control" name = "Servo" type = "servo_listener.py" output = "screen">
+        <rosparam file="$(find servo_control)/config/servo_params.yaml" />
+    </node>
+
+</launch>

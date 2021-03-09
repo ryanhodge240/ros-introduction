@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import rospy
 import RPi.GPIO as GPIO
-from ryans_package.msg import CommandDrive, Servo
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)

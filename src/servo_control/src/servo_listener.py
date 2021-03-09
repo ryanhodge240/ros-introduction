@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import rospy
-from ryans_package.msg import Servo, CommandDrive
+from servo_control.msg import Servo, CommandDrive
 import hardware_setup as hardware
 
 class ServoListener(object):

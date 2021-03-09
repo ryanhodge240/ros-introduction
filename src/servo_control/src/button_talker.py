@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import rospy
-from ryans_package.msg import CommandDrive
+from servo_control.msg import CommandDrive
 import hardware_setup as hardware
 
 class ButtonTalker(object):
