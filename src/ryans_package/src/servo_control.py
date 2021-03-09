@@ -67,10 +67,10 @@ class ServoControl(object):
             # Check to see if there are commands in the buffer to send to the servo
 
             if not button_state:
-                self.publish_button_state()
+                self.publish_button_state(5.0)
                 button_state = False
             else:
-                self.left_servo.stop()
+                self.publish_button_state(12.5)
             
             # Don't update the velocity and position of the motors every iteration
             if (counter >= 5):
@@ -85,9 +85,9 @@ class ServoControl(object):
 
             rate.sleep()
 
-    def publish_button_state(self):
+    def publish_button_state(self, velocity):
         button = CommandDrive()
-        button.left_front_vel = 3
+        button.left_front_vel = velocity
         self.button_pub.publish(button)
 
     # Send out the velocity (cmd) to the servo
