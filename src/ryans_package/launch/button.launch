@@ -4,7 +4,7 @@
         <rosparam file="$(find ryans_package)/config/sensor_params.yaml" />
     </node>
 
-    <node pkg = "ryans_package" name = "Servo" type = "servo_listener.py" output = "screen">
+    <node pkg = "ryans_package" name = "Servo" type = "servo_listener_test.py" output = "screen">
         <rosparam file="$(find ryans_package)/config/servo_params.yaml" />
     </node>
 
