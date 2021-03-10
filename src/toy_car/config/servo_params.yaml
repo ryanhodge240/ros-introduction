@@ -1,0 +1,6 @@
+servo_mapping:
+  left_motor:
+    address: 11
+    ticks_per_rev: 28
+    gear_ratio: 26.9
+    Hz: 50
