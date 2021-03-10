@@ -1,4 +1,4 @@
-sensor_mapping:
+motor_controller:
   button:
     address: 13
   distance:
