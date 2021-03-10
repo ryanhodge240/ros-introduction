@@ -31,7 +31,7 @@ The `launch` directory contains the launch file(s) of which can be used to run t
 The `msg` directory includes the user-defined message definitions used in the `src` directory python files.<br><br>
 Finally, the `src` directory conatins the brains of the package. These python files are what uses the ros messages and initializes all the nodes. <br><br>
 
-## Instructions
+## Setup
 Clone this repository, cd into ros_ws, and build the workspace.
 ```Shell
 git clone https://github.com/ryanhodge240/ros_ws.git
