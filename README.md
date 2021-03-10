@@ -65,3 +65,6 @@ Next, open up a new terminal and re-source the workspace. Then run the teleop_tw
 ```Shell
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
+
+## Toy Car
+This package is not complete yet, but it will work with a motor controller to use differential drive on a small toy car with 2 wheels and a caster in the back. 
