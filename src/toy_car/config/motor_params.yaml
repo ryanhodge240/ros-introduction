@@ -1,11 +1,9 @@
 motor_mapping:
   left_motor:
-    address: 11
-    ticks_per_rev: 28
-    gear_ratio: 26.9
-    Hz: 50
+    in1: 18
+    in2: 16
+    en: 22
   right_motor:
-    address: 11
-    ticks_per_rev: 28
-    gear_ratio: 26.9
-    Hz: 50
+    in1: 36
+    in2: 38
+    en: 40

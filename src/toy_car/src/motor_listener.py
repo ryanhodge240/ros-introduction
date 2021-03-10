@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
 import rospy
 from geometry_msgs.msg import Twist
-import hardware_setup as hardware
+import motor_commands as motors
 
 class ServoListener(object):
     def __init__(self):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
-        self.left_servo = hardware.setup_servo()
+        self.left_servo = motors.setup_motor_controller()
         self.stop_servo()
-        self.callback = False
 
-    def stop_servo(self):
-        hardware.stop_servo(self.left_servo)
+    def stop_servo():
+        motors.stop_motors()
 
     # Start the servo
     def drive_callback(self, cmd):
@@ -23,11 +22,7 @@ class ServoListener(object):
             position = 12.5
         
         rospy.loginfo("Got a command: p = %f", position)
-        self.callback = True
         hardware.move_servo(self.left_servo, position)
-
-    def make_servo_nuetral(self):
-        hardware.move_servo(self.left_servo, 7.5)
 
     # Infinite while loop
     def run(self):
@@ -35,10 +30,7 @@ class ServoListener(object):
 
         while not rospy.is_shutdown():
             rospy.Subscriber("/cmd_vel", Twist, self.drive_callback, queue_size = 1)
-            if self.callback:
-                self.callback = False
-            else:
-                self.make_servo_nuetral()
+            
             rate.sleep()
 
 if __name__ == "__main__":

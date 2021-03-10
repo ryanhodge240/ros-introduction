@@ -2,7 +2,6 @@
 
     <node pkg = "toy_car" name = "ToyCar" type = "motor_listener.py" output = "screen">
         <rosparam file="$(find toy_car)/config/motor_params.yaml" />
-        <rosparam file="$(find toy_car)/config/motor_controller_params.yaml" />
     </node>
 
 </launch>
