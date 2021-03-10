@@ -1,5 +1,5 @@
 # Intro to ROS
-The purpose of this repository is to create increasingly complicated ROS packages as to understand how to use it. The order of packages is as follows:  
+The purpose of this repository is to create ROS packages with increasing difficulties, as to understand how to use it. The order of packages is as follows:  
   
   1. servo_control
   2. keyboard_servo_control
@@ -61,7 +61,7 @@ source devel/setup.sh
 roslaunch keyboard_servo_control servo.launch
 ```
 
-Next, open up a new terminal and resource the workspace. Then run the teleop_twist_keyboard.
+Next, open up a new terminal and re-source the workspace. Then run the teleop_twist_keyboard.
 ```Shell
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
