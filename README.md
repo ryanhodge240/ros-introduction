@@ -42,6 +42,10 @@ Then, source the setup.sh file
 ```Shell
 source devel/setup.sh
 ```
+Finally, install a package that will be used for some of the packages in this repository where `<distro>` should be replaced with your ros distribution (i.e. noetic). 
+```Shell
+sudo apt-get install ros-<distro>-teleop-twist-keyboard
+```
 
 ## Servo Control
 This package is designed to rotate a servo to a certain position when a button is pushed, and then rotate back once to button is released. To run it, all you need to do is run the launch file after sourcing the setup.sh file. 
@@ -51,4 +55,13 @@ roslaunch servo_control servo.launch
 ```
 
 ## Keyboard Servo Control
-This package uses the teleop_twist_keyboard package to communicate with the standard geometry_msgs/Twist message. It publishes reading from the keyboard into the Twist message, of which the python file is subscribed to. To run this, you will need two separate 
+This package uses the teleop_twist_keyboard package to communicate with the standard geometry_msgs/Twist message. It publishes reading from the keyboard into the Twist message, of which the python file is subscribed to. To run this, you will need two separate terminals running. First, open a terminal and locate ros_ws. Source the setup.sh file and run the launch file. 
+```Shell
+source devel/setup.sh
+roslaunch keyboard_servo_control servo.launch
+```
+
+Next, open up a new terminal and resource the workspace. Then run the teleop_twist_keyboard.
+```Shell
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+```
