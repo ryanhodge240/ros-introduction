@@ -16,6 +16,7 @@ class MotorListener(object):
 
     # Start the servo
     def drive_callback(self, cmd):
+        position = 0
         if cmd.linear.x:
             position = 2.5
         elif cmd.angular.z:
