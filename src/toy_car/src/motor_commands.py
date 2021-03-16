@@ -22,8 +22,8 @@ def setup_motor_controller():
         GPIO.setup(motors[i][2], GPIO.OUT)
         GPIO.setup(motors[i][0], GPIO.LOW)
         GPIO.setup(motors[i][1], GPIO.LOW)
-        motor_pwm = GPIO.PWM(motors[i][2], 1000)
-        motor_pwm.start(25)
+        motor_pwm[i] = GPIO.PWM(motors[i][2], 1000)
+        motor_pwm[i].start(25)
 
 def set_pwm_equal():
     motor_pwm[0].ChangeDutyCycle(50)
