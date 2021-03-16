@@ -17,9 +17,9 @@ class MotorListener(object):
 
     # Start the servo
     def drive_callback(self, cmd):
-        if cmd.linear.x:
+        if cmd.linear.x > 0:
             self.hardware.move_forward()
-        elif cmd.angular.z:
+        elif cmd.angular.z > 0:
             self.hardware.move_backward()
         
         rospy.loginfo("\tFrom teleop Twist: linear.x = %f", cmd.linear.x)
