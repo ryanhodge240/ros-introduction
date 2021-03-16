@@ -32,8 +32,8 @@ def set_pwm_equal():
 def move_forward():
     for i in range(len(motors)):
         set_pwm_equal()
-        GPIO.output(motors[i]["in1"], GPIO.HIGH)
-        GPIO.output(motors[i]["in1"], GPIO.LOW)
+        GPIO.output(motors[i][0], GPIO.HIGH)
+        GPIO.output(motors[i][0], GPIO.LOW)
 
 def turn_left():
     motor_pwm[0].ChangeDutyCycle(25)
@@ -46,11 +46,11 @@ def turn_right():
 def move_backwards():
     for i in range(len(motors)):
         set_pwm_equal()
-        GPIO.output(motors[i]["in1"], GPIO.LOW)
-        GPIO.output(motors[i]["in1"], GPIO.HIGH)
+        GPIO.output(motors[i][0], GPIO.LOW)
+        GPIO.output(motors[i][0], GPIO.HIGH)
 
 def stop_motors():
     for i in range(len(motors)):
         set_pwm_equal()
-        GPIO.output(motors[i]["in1"], GPIO.LOW)
-        GPIO.output(motors[i]["in1"], GPIO.LOW)
+        GPIO.output(motors[i][0], GPIO.LOW)
+        GPIO.output(motors[i][0], GPIO.LOW)
