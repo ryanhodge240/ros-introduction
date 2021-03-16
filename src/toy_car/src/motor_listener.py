@@ -11,7 +11,7 @@ class MotorListener(object):
         self.left_servo = motors.setup_motor_controller()
         self.stop_motors()
 
-    def stop_motors():
+    def stop_motors(self):
         motors.stop_motors()
 
     # Start the servo
