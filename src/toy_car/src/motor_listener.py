@@ -3,15 +3,15 @@ import rospy
 from geometry_msgs.msg import Twist
 import motor_commands as motors
 
-class ServoListener(object):
+class MotorListener(object):
     def __init__(self):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
         self.left_servo = motors.setup_motor_controller()
-        self.stop_servo()
+        self.stop_motors()
 
-    def stop_servo():
+    def stop_motors():
         motors.stop_motors()
 
     # Start the servo
@@ -22,7 +22,9 @@ class ServoListener(object):
             position = 12.5
         
         rospy.loginfo("Got a command: p = %f", position)
-        hardware.move_servo(self.left_servo, position)
+        rospy.loginfo("\tFrom teleop Twist: linear.x = %f", cmd.linear.x)
+        rospy.loginfo("\tFrom teleop Twist: angular.z = %f", cmd.angular.z)
+        # hardware.move_servo(self.left_servo, position)
 
     # Infinite while loop
     def run(self):
@@ -34,9 +36,9 @@ class ServoListener(object):
             rate.sleep()
 
 if __name__ == "__main__":
-    rospy.init_node("Servo Wrapper", log_level=rospy.INFO)
+    rospy.init_node("Motor Wrapper", log_level=rospy.INFO)
     rospy.loginfo("Starting the servo wrapper node")
 
-    wrapper = ServoListener()
-    rospy.on_shutdown(wrapper.stop_servo)
+    wrapper = MotorListener()
+    rospy.on_shutdown(wrapper.stop_motors)
     wrapper.run()
