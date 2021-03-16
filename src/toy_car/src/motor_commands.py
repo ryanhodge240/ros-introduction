@@ -11,9 +11,11 @@ def setup_motor_controller():
     motors = {}
     motor_pwm = []
     counter = 0
-    for motor_name, properties in motor_controller_mapping.iteritems():
+
+    for motor_name, properties in motor_controller_mapping.items():
         motors[counter] = [properties["in1"], properties["in2"], properties["en"]]
         counter += 1
+
     for i in range(len(motors)):
         GPIO.setup(motors[i]["in1"], GPIO.OUT)
         GPIO.setup(motors[i]["in2"], GPIO.OUT)
