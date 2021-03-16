@@ -8,7 +8,8 @@ class MotorListener(object):
         rospy.loginfo("Initializing servos")
 
         # Initialize attributes
-        self.left_servo = motors.setup_motor_controller()
+        self.hardware = motors
+        self.hardware.setup_motor_controller()
         self.stop_motors()
 
     def stop_motors(self):
@@ -16,13 +17,11 @@ class MotorListener(object):
 
     # Start the servo
     def drive_callback(self, cmd):
-        position = 0
         if cmd.linear.x:
-            position = 2.5
+            self.hardware.move_forward()
         elif cmd.angular.z:
-            position = 12.5
+            self.hardware.move_backward()
         
-        rospy.loginfo("Got a command: p = %f", position)
         rospy.loginfo("\tFrom teleop Twist: linear.x = %f", cmd.linear.x)
         rospy.loginfo("\tFrom teleop Twist: angular.z = %f", cmd.angular.z)
         # hardware.move_servo(self.left_servo, position)
