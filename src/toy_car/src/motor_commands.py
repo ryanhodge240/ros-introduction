@@ -17,12 +17,12 @@ def setup_motor_controller():
         counter += 1
 
     for i in range(len(motors)):
-        GPIO.setup(motors[i]["in1"], GPIO.OUT)
-        GPIO.setup(motors[i]["in2"], GPIO.OUT)
-        GPIO.setup(motors[i]["en"], GPIO.OUT)
-        GPIO.setup(motors[i]["in1"], GPIO.LOW)
-        GPIO.setup(motors[i]["in2"], GPIO.LOW)
-        motor_pwm = GPIO.PWM(motors[i]["en"], 1000)
+        GPIO.setup(motors[i][0], GPIO.OUT)
+        GPIO.setup(motors[i][1], GPIO.OUT)
+        GPIO.setup(motors[i][2], GPIO.OUT)
+        GPIO.setup(motors[i][0], GPIO.LOW)
+        GPIO.setup(motors[i][1], GPIO.LOW)
+        motor_pwm = GPIO.PWM(motors[i][2], 1000)
         motor_pwm.start(25)
 
 def set_pwm_equal():
