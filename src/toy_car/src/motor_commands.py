@@ -5,15 +5,15 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
-motor_controller_mapping = rospy.get_param('~motor_mapping')
-motors = {}
-motor_pwm = []
-counter = 0
-for motor_name, properties in motor_controller_mapping.iteritems():
-    motors[counter] = [properties["in1"], properties["in2"], properties["en"]]
-    counter += 1
-
 def setup_motor_controller():
+    global motor_controller_mapping, motors, motor_pwm
+    motor_controller_mapping = rospy.get_param('~motor_mapping')
+    motors = {}
+    motor_pwm = []
+    counter = 0
+    for motor_name, properties in motor_controller_mapping.iteritems():
+        motors[counter] = [properties["in1"], properties["in2"], properties["en"]]
+        counter += 1
     for i in range(len(motors)):
         GPIO.setup(motors[i]["in1"], GPIO.OUT)
         GPIO.setup(motors[i]["in2"], GPIO.OUT)
