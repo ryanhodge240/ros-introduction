@@ -29,8 +29,8 @@ def move_forwards():
     rospy.loginfo("Moving Forward...")
     for i in range(len(motors)):
         motor_pwm[i].ChangeDutyCycle(10)
-        GPIO.output(motors[i][0], GPIO.LOW)
-        GPIO.output(motors[i][1], GPIO.HIGH)
+        GPIO.output(motors[i][0], GPIO.HIGH)
+        GPIO.output(motors[i][1], GPIO.LOW)
 
 def turn_left():
     rospy.loginfo("Turning Left...")
