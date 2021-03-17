@@ -20,9 +20,9 @@ class MotorListener(object):
         if cmd.linear.x > 0:
             self.hardware.move_forward()
         elif cmd.angular.z > 0:
-            self.hardware.move_right()
+            self.hardware.turn_right()
         elif cmd.angular.z < 0:
-            self.hardware.move_left()
+            self.hardware.turn_left()
         else:
             self.hardware.stop_motors()
         
