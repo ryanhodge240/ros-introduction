@@ -20,9 +20,9 @@ class MotorListener(object):
         if cmd.linear.x == 0.5 and cmd.angular.z == 0:
             self.hardware.move_forwards()
         elif cmd.angular.z == 1.0 and cmd.linear.x == 0:
-            self.hardware.turn_right()
-        elif cmd.angular.z == -1.0 and cmd.linear.x == 0:
             self.hardware.turn_left()
+        elif cmd.angular.z == -1.0 and cmd.linear.x == 0:
+            self.hardware.turn_right()
         elif cmd.linear.x == -0.5 and cmd.angular.z == -1.0:
             self.hardware.move_backwards()
         else:
