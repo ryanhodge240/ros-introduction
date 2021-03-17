@@ -33,10 +33,12 @@ def move_forward():
         GPIO.output(motors[i][1], GPIO.LOW)
 
 def turn_left():
+    rospy.loginfo("Moving Left...")
     motor_pwm[0].ChangeDutyCycle(15)
     motor_pwm[1].ChangeDutyCycle(20)
 
 def turn_right():
+    rospy.loginfo("Moving Right...")
     motor_pwm[0].ChangeDutyCycle(20)
     motor_pwm[1].ChangeDutyCycle(15)
 
