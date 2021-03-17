@@ -30,15 +30,15 @@ def move_forwards():
     for i in range(len(motors)):
         motor_pwm[i].ChangeDutyCycle(12)
         GPIO.output(motors[i][0], GPIO.HIGH)
-        GPIO.output(motors[i][1], GPIO.LOW)
+        GPIO.output(motors[i][1], GPIO.HIGH)
 
 def turn_left():
-    rospy.loginfo("Moving Left...")
+    rospy.loginfo("Turning Left...")
     motor_pwm[0].ChangeDutyCycle(15)
     motor_pwm[1].ChangeDutyCycle(20)
 
 def turn_right():
-    rospy.loginfo("Moving Right...")
+    rospy.loginfo("Turning Right...")
     motor_pwm[0].ChangeDutyCycle(20)
     motor_pwm[1].ChangeDutyCycle(15)
 
