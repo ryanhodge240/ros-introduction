@@ -23,12 +23,12 @@ def setup_motor_controller():
         GPIO.setup(motors[i][0], GPIO.LOW)
         GPIO.setup(motors[i][1], GPIO.LOW)
         motor_pwm.append(GPIO.PWM(motors[i][2], 1000))
-        motor_pwm[i].start(25)
+        motor_pwm[i].start(0)
 
 def move_forwards():
     rospy.loginfo("Moving Forward...")
     for i in range(len(motors)):
-        motor_pwm[i].ChangeDutyCycle(12)
+        motor_pwm[i].ChangeDutyCycle(10)
         GPIO.output(motors[i][0], GPIO.LOW)
         GPIO.output(motors[i][1], GPIO.HIGH)
 
@@ -45,13 +45,13 @@ def turn_right():
 def move_backwards():
     rospy.loginfo("Moving Backward...")
     for i in range(len(motors)):
-        motor_pwm[i].ChangeDutyCycle(12)
+        motor_pwm[i].ChangeDutyCycle(10)
         GPIO.output(motors[i][0], GPIO.LOW)
         GPIO.output(motors[i][1], GPIO.HIGH)
 
 def stop_motors():
     rospy.loginfo("Stopping Motors...")
     for i in range(len(motors)):
-        motor_pwm[i].ChangeDutyCycle(12)
+        motor_pwm[i].ChangeDutyCycle(10)
         GPIO.output(motors[i][0], GPIO.LOW)
         GPIO.output(motors[i][0], GPIO.LOW)
