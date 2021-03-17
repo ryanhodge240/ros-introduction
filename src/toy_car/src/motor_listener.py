@@ -22,8 +22,8 @@ class MotorListener(object):
         elif cmd.angular.z > 0:
             self.hardware.move_backward()
         
-        rospy.loginfo("\tFrom teleop Twist: linear.x = %f", cmd.linear.x)
-        rospy.loginfo("\tFrom teleop Twist: angular.z = %f", cmd.angular.z)
+        # rospy.loginfo("\tFrom teleop Twist: linear.x = %f", cmd.linear.x)
+        # rospy.loginfo("\tFrom teleop Twist: angular.z = %f", cmd.angular.z)
         # hardware.move_servo(self.left_servo, position)
 
     # Infinite while loop
