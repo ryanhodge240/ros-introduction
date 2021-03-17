@@ -23,6 +23,8 @@ class MotorListener(object):
             self.hardware.move_right()
         elif cmd.angular.z < 0:
             self.hardware.move_left()
+        else:
+            self.hardware.stop_motors()
         
         # rospy.loginfo("\tFrom teleop Twist: linear.x = %f", cmd.linear.x)
         # rospy.loginfo("\tFrom teleop Twist: angular.z = %f", cmd.angular.z)

@@ -50,6 +50,7 @@ def move_backward():
         GPIO.output(motors[i][1], GPIO.HIGH)
 
 def stop_motors():
+    rospy.loginfo("Stopping Motors...")
     for i in range(len(motors)):
         motor_pwm[i].ChangeDutyCycle(12)
         GPIO.output(motors[i][0], GPIO.LOW)
