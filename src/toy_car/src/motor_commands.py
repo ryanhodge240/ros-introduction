@@ -30,6 +30,7 @@ def set_pwm_equal():
     motor_pwm[1].ChangeDutyCycle(50)
 
 def move_forward():
+    rospy.loginfo("Moving Forward...")
     for i in range(len(motors)):
         set_pwm_equal()
         GPIO.output(motors[i][0], GPIO.HIGH)
@@ -44,6 +45,7 @@ def turn_right():
     motor_pwm[1].ChangeDutyCycle(25)
 
 def move_backward():
+    rospy.loginfo("Moving Backward...")
     for i in range(len(motors)):
         set_pwm_equal()
         GPIO.output(motors[i][0], GPIO.LOW)

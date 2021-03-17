@@ -1,12 +1,11 @@
-import RPi.GPIO as GPIO          
-from time import sleep
+import RPi.GPIO as GPIO
 
 in1 = 35
 in2 = 37
 en = 33
 temp1=1
 
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 GPIO.setup(in1,GPIO.OUT)
 GPIO.setup(in2,GPIO.OUT)
 GPIO.setup(en,GPIO.OUT)
@@ -17,12 +16,12 @@ p.start(25)
 print("\n")
 print("The default speed & direction of motor is LOW & Forward.....")
 print("r-run s-stop f-forward b-backward l-low m-medium h-high e-exit")
-print("\n")    
+print("\n")
 
 while(1):
 
     x=input()
-    
+
     if x=='r':
         print("run")
         if(temp1==1):
@@ -71,12 +70,12 @@ while(1):
         print("high")
         p.ChangeDutyCycle(75)
         x='z'
-     
-    
+
+
     elif x=='e':
         GPIO.cleanup()
         break
-    
+
     else:
         print("<<<  wrong data  >>>")
         print("please enter the defined data to continue.....")
