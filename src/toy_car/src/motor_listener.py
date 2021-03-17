@@ -20,7 +20,9 @@ class MotorListener(object):
         if cmd.linear.x > 0:
             self.hardware.move_forward()
         elif cmd.angular.z > 0:
-            self.hardware.move_backward()
+            self.hardware.move_right()
+        elif cmd.angular.z < 0:
+            self.hardware.move_left()
         
         # rospy.loginfo("\tFrom teleop Twist: linear.x = %f", cmd.linear.x)
         # rospy.loginfo("\tFrom teleop Twist: angular.z = %f", cmd.angular.z)
