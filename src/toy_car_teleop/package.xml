@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>toy_car</name>
+  <name>toy_car_teleop</name>
   <version>0.0.0</version>
   <description>Toy Car Package</description>
 

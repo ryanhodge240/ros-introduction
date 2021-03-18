@@ -1,7 +1,7 @@
 <launch> 
 
-    <node pkg = "toy_car" name = "ToyCar" type = "motor_listener.py" output = "screen">
-        <rosparam file="$(find toy_car)/config/motor_params.yaml" />
+    <node pkg = "toy_car_teleop" name = "ToyCar" type = "motor_listener.py" output = "screen">
+        <rosparam file="$(find toy_car_teleop)/config/motor_params.yaml" />
     </node>
 
 </launch>
