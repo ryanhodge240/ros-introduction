@@ -1,0 +1,9 @@
+motor_mapping:
+  left_motor:
+    in1: 35
+    in2: 37
+    en: 33
+  right_motor:
+    in1: 36
+    in2: 38
+    en: 40

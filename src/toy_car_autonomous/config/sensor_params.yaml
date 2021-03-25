@@ -1,0 +1,4 @@
+sensor_mapping:
+  distance:
+    trig: 35
+    echo: 37

@@ -1,0 +1,11 @@
+<launch> 
+
+    <node pkg = "toy_car_autonomous" name = "ToyCar" type = "motor_listener.py" output = "screen">
+        <rosparam file="$(find toy_car_autonomous)/config/motor_params.yaml" />
+    </node>
+
+    <node pkg = "toy_car_autonomous" name = "ToyCar" type = "distance_talker.py" output = "screen">
+        <rosparam file="$(find toy_car_autonomous)/config/sensor_params.yaml" />
+    </node>
+
+</launch>
